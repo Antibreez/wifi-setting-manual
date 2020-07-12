@@ -30,7 +30,8 @@ gulp.task(`clean`, function () {
 
 gulp.task(`copy`, function () {
   return gulp.src([
-    `source/fonts/**`
+    `source/fonts/**`,
+    `source/data.json`
   ], {
     base: `source`
   })
@@ -110,9 +111,11 @@ gulp.task(`js-vendor`, function () {
 
 gulp.task(`js`, function () {
   return gulp.src([
+    `source/js/modules/animation.js`,
     `source/js/modules/backend.js`,
     `source/js/modules/select.js`,
     `source/js/modules/choice.js`,
+    `source/js/modules/resize.js`,
   ])
     .pipe(plumber())
     .pipe(sourcemap.init())

@@ -71,8 +71,6 @@
 
   const seriesSelects = document.querySelectorAll('.model-choice__series-select');
 
-  console.log(seriesSelects);
-
 
   const hideSeries = () => {
     seriesSelects.forEach((select) => {

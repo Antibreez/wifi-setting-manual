@@ -8,3 +8,10 @@
 
   background-color: #f7f7f7;
 }
+
+@include tablet {
+  .page-model {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
