@@ -1958,6 +1958,9 @@ label[for='series-select'] {
     opacity: 0;
     z-index: 100;
   }
+  .model-choice__select option {
+    opacity: 1;
+  }
 }
 
 .model-choice__select.hidden + span {

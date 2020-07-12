@@ -256,10 +256,12 @@
 
   const removeClass = (item) => {
     item.classList.remove(hidingClass);
+    item.removeAttribute('aria-hidden');
   };
 
   const addClass = (item) => {
     item.classList.add(hidingClass);
+    item.setAttribute('aria-hedden', 'true');
   };
 
   const isMobile = () => {
