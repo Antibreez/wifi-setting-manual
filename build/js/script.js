@@ -187,6 +187,10 @@
   makeSelect(brandClass);
   makeSelect(seriesClass);
 
+  jQuery(brandClass).select2('open');
+  jQuery(brandClass).select2('close');
+
+
   const seriesSelects = document.querySelectorAll('.model-choice__series-select');
 
   console.log(seriesSelects);
@@ -211,6 +215,9 @@
 
     hideSeries();
     showSeries(idx + 1);
+
+    jQuery('#series-select').select2('open');
+    jQuery('#series-select').select2('close');
 
     jQuery('.model-choice__brand-select').addClass('selected');
     jQuery('.model-choice__series-select').removeClass('selected');
