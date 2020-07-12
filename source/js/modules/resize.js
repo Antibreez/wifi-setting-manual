@@ -8,11 +8,13 @@
   const removeClass = (item) => {
     item.classList.remove(hidingClass);
     item.removeAttribute('aria-hidden');
+    item.removeAttribute('tabindex');
   };
 
   const addClass = (item) => {
     item.classList.add(hidingClass);
     item.setAttribute('aria-hedden', 'true');
+    item.setAttribute('tabindex', '-1');
   };
 
   const isMobile = () => {
