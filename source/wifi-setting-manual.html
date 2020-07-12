@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Daichi</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- <link rel="preload" href="fonts/GothamPro.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/GothamPro-Light.woff2" as="font" type="font/woff2" crossorigin> -->
+  <link rel="stylesheet" href="css/style.min.css" type="text/css">
+</head>
+
+<body>
+  <main class="page-model">
+    <section class="model-choice">
+      <h1 class="model-choice__title">
+        Установка Wi-Fi контроллера
+      </h1>
+      <div class="model-choice__image"></div>
+      <p class="model-choice__label">
+        Укажите бренд и серию Вашего кондиционера
+      </p>
+      <div class="model-choice__brand-wrapper">
+        <label for="brand-select">Бренд</label>
+        <select class="model-choice__select  model-choice__brand-select" name="brand" id="brand-select" style="width: 100%">
+          <option value="" disabled selected hidden>Выбрать из списка</option>
+        </select>
+      </div>
+
+
+      <div class="model-choice__series-wrapper">
+        <label for="series-select">Серия</label>
+        <select class="model-choice__select  model-choice__series-select" disabled style="width: 100%">
+          <option value="">Выбрать из списка</option>
+        </select>
+      </div>
+      <a class="model-choice__link disabled">Далее</a>
+    </section>
+  </main>
+
+  <template id="series">
+    <select class="model-choice__select  model-choice__series-select" name="series" style="width: 100%">
+      <option value="">Выбрать из списка</option>
+    </select>
+  </template>
+
+  <script src="js/vendor.min.js"></script>
+  <script src="js/script.min.js"></script>
+</body>
+</html>
