@@ -243,45 +243,232 @@
   const brandClass = '.model-choice__brand-select';
   const seriesClass = '.model-choice__series-select';
 
-  const brandSelect = document.querySelector('.model-choice__brand-select');
+  const brandList = document.querySelector('.model-choice__brand-list');
+  const brandButton = document.querySelector('.model-choice__brand-choice');
+  const seriesList = document.querySelector('.model-choice__series-list');
+  const seriesButton = document.querySelector('.model-choice__series-choice');
+  const brandSelect = document.querySelector('.model-choice__select-brand');
+  const seriesSelect = document.querySelector('.model-choice__select-series');
+
+  let currentBrandIdx = -1;
+  let currentOptionIdx = -1;
+
+  //const brandSelect = document.querySelector('.model-choice__brand-select');
   const seriesWrapper = document.querySelector('.model-choice__series-wrapper');
   const seriesTemplate = document.querySelector('#series').content.querySelector('.model-choice__series-select');
 
   const link = document.querySelector('.model-choice__link');
 
-  const getData = (data) => {
-    return data;
-  }
+  const onBrandClick = () => {
+    if (!brandList.classList.contains('show')) {
+      brandList.classList.add('show');
+      return;
+    }
+
+    if (brandList.classList.contains('show')) {
+      brandList.classList.remove('show');
+    }
+    // jQuery('.model-choice__brand-list').mCustomScrollbar({
+    //   setHeight: 189,
+    //   autoHideScrollbar: false,
+    //   theme: 'dark',
+    //   mouseWheelPixels: 200,
+    //   contentTouchScroll: true
+    // });
+  };
+
+  const onSeriesClick = () => {
+    if (!seriesList.classList.contains('show')) {
+      seriesList.classList.add('show');
+
+      // console.log(seriesList.getBoundingClientRect().bottom - window.innerHeight);
+      return;
+    }
+
+    if (seriesList.classList.contains('show')) {
+      seriesList.classList.remove('show');
+    }
+  };
+
+  const onOutsideClick = (evt) => {
+    let target = evt.target;
+
+    if (
+      !target.classList.contains('model-choice__brand-choice')
+      && !target.classList.contains('model-choice__brand-item')
+      && !target.classList.contains('model-choice__brand-list')
+      && brandList.classList.contains('show')
+    ) {
+      brandList.classList.remove('show')
+    }
+
+    if (
+      !target.classList.contains('model-choice__series-choice')
+      && !target.classList.contains('model-choice__series-item')
+      && !target.classList.contains('model-choice__series-list')
+      && seriesList.classList.contains('show')
+    ) {
+      seriesList.classList.remove('show')
+    }
+  };
 
   const makeOptionNode = (arr) => {
     let fragment = document.createDocumentFragment();
     let i = 0;
 
     arr.forEach((item) => {
-      let node = document.createElement('option');
-      node.setAttribute('value', item['title']);
+      let node = document.createElement('li');
       node.textContent = item['title'];
+      node.classList.add('model-choice__brand-item');
       node.setAttribute('data-id', i);
       i++;
       fragment.appendChild(node);
 
-      let seriesSelect = seriesTemplate.cloneNode(true);
-      seriesSelect.classList.add('hidden');
-      seriesSelect.setAttribute('name', item['title']);
+      // let seriesSelect = seriesTemplate.cloneNode(true);
+      // seriesSelect.classList.add('hidden');
+      // seriesSelect.setAttribute('name', item['title']);
 
-      item.series.forEach((serie) => {
-        let node = document.createElement('option');
-        node.setAttribute('value', serie['title']);
-        node.textContent = serie['title'];
-        seriesSelect.appendChild(node);
-      });
+      // item.series.forEach((serie) => {
+      //   let node = document.createElement('option');
+      //   node.setAttribute('value', serie['title']);
+      //   node.textContent = serie['title'];
+      //   seriesSelect.appendChild(node);
+      // });
 
-      seriesWrapper.appendChild(seriesSelect);
+      // seriesWrapper.appendChild(seriesSelect);
     });
 
-    brandSelect.appendChild(fragment);
-    
+    brandList.appendChild(fragment);
 
+
+    let fragment1 = document.createDocumentFragment();
+    let j = 0;
+
+    arr.forEach((item) => {
+      let node1 = document.createElement('option');
+      node1.textContent = item['title'];
+      node1.classList.add('model-choice__brand-option');
+      node1.setAttribute('data-id', i);
+      j++;
+      fragment1.appendChild(node1);
+
+      // let seriesSelect = seriesTemplate.cloneNode(true);
+      // seriesSelect.classList.add('hidden');
+      // seriesSelect.setAttribute('name', item['title']);
+
+      // item.series.forEach((serie) => {
+      //   let node = document.createElement('option');
+      //   node.setAttribute('value', serie['title']);
+      //   node.textContent = serie['title'];
+      //   seriesSelect.appendChild(node);
+      // });
+
+      // seriesWrapper.appendChild(seriesSelect);
+    });
+
+    brandSelect.appendChild(fragment1);
+
+
+
+    const onBrandItemClick = (evt) => {
+      let target = evt.target;
+      let idx = +target.getAttribute('data-id');
+
+      if (target.classList.contains('model-choice__brand-item')) {
+        if (currentBrandIdx === idx) {
+          brandList.classList.remove('show');
+        }
+
+        if (currentBrandIdx !== idx) {
+          seriesList.innerHTML = '';
+
+          let fragment = document.createDocumentFragment();
+          let idx = +target.getAttribute('data-id');
+
+          arr[idx].series.forEach((serie) => {
+            let node = document.createElement('li');
+            node.textContent = serie['title'];
+            node.classList.add('model-choice__series-item');
+            fragment.appendChild(node);
+          });
+
+          seriesList.appendChild(fragment);
+          currentBrandIdx = idx;
+
+          brandButton.textContent = target.textContent;
+          if (!brandButton.classList.contains('selected')) {
+            brandButton.classList.add('selected');
+          }
+
+          if (seriesButton.hasAttribute('disabled')) {
+            seriesButton.removeAttribute('disabled');
+          }
+
+          brandList.classList.remove('show');
+        }
+      }
+    }
+
+    const onBrandChange = (evt) => {
+      currentOptionIdx = evt.target.selectedIndex - 1;
+      seriesSelect.innerHTML = '';
+
+      let node = document.createElement('option');
+      node.textContent = "Выбрать из списка";
+      node.setAttribute('disabled', '');
+      node.setAttribute('selected', '');
+
+      seriesSelect.appendChild(node);
+
+      let fragment = document.createDocumentFragment();
+
+      if (seriesSelect.hasAttribute('disabled')) {
+        seriesSelect.removeAttribute('disabled');
+      }
+
+
+      arr[currentOptionIdx].series.forEach((serie) => {
+        let node = document.createElement('option');
+        node.textContent = serie['title'];
+        node.classList.add('model-choice__series-option');
+        fragment.appendChild(node);
+      });
+
+      seriesSelect.appendChild(fragment);
+
+      brandButton.textContent = evt.target.value;
+      if (!brandButton.classList.contains('selected')) {
+        brandButton.classList.add('selected');
+      }
+    }
+
+    const onSeriesItemClick = (evt) => {
+      let target = evt.target;
+
+      if (target.classList.contains('model-choice__series-item')) {
+        seriesButton.textContent = target.textContent;
+        if (!seriesButton.classList.contains('selected')) {
+          seriesButton.classList.add('selected');
+        }
+
+        seriesList.classList.remove('show');
+
+        link.classList.remove('disabled');
+        linkHref = target.textContent;
+        link.setAttribute('href', linkHref);
+      }
+    }
+
+    const onSeriesChange = (evt) => {
+      seriesButton.textContent = evt.target.value;
+      if (!seriesButton.classList.contains('selected')) {
+        seriesButton.classList.add('selected');
+      }
+
+      link.classList.remove('disabled');
+      linkHref = evt.target.value;
+      link.setAttribute('href', linkHref);
+    }
 
     //let splitsData = backend.load(getData);
 
@@ -290,59 +477,67 @@
     //backend.load(makeOptionNode);
 
 
-    makeSelect(brandClass);
-    makeSelect(seriesClass);
+    // makeSelect(brandClass);
+    // makeSelect(seriesClass);
 
-    jQuery(brandClass).select2('open');
-    jQuery(brandClass).select2('close');
-
-
-    const seriesSelects = document.querySelectorAll('.model-choice__series-select');
+    // jQuery(brandClass).select2('open');
+    // jQuery(brandClass).select2('close');
 
 
-    const hideSeries = () => {
-      seriesSelects.forEach((select) => {
-        if (!select.classList.contains('hidden')) {
-          select.classList.add('hidden');
-          select.removeAttribute('id');
-        }
-      })
-    };
-
-    const showSeries = (idx) => {
-      seriesSelects[idx].classList.remove('hidden');
-      seriesSelects[idx].setAttribute('id', 'series-select');
-    };
-
-    jQuery(brandClass).on('change', function (evt) {
-      let idx = +jQuery('.model-choice__brand-select option:selected').attr('data-id');
-
-      hideSeries();
-      showSeries(idx + 1);
-
-      jQuery('#series-select').select2('open');
-      jQuery('#series-select').select2('close');
-
-      jQuery('.model-choice__brand-select').addClass('selected');
-      jQuery('.model-choice__series-select').removeClass('selected');
-    });
-
-    jQuery(seriesClass).on('change', function (evt) {
-      if (link.classList.contains('disabled')) {
-        link.classList.remove('disabled');
-      }
-
-      let value = jQuery(evt.target).children('option:selected').text();
-      linkHref = value;
+    // const seriesSelects = document.querySelectorAll('.model-choice__series-select');
 
 
-      link.setAttribute('href', linkHref);
+    // const hideSeries = () => {
+    //   seriesSelects.forEach((select) => {
+    //     if (!select.classList.contains('hidden')) {
+    //       select.classList.add('hidden');
+    //       select.removeAttribute('id');
+    //     }
+    //   })
+    // };
 
-      jQuery('.model-choice__series-select').addClass('selected');
-    });
+    // const showSeries = (idx) => {
+    //   seriesSelects[idx].classList.remove('hidden');
+    //   seriesSelects[idx].setAttribute('id', 'series-select');
+    // };
+
+    // jQuery(brandClass).on('change', function (evt) {
+    //   let idx = +jQuery('.model-choice__brand-select option:selected').attr('data-id');
+
+    //   hideSeries();
+    //   showSeries(idx + 1);
+
+    //   jQuery('#series-select').select2('open');
+    //   jQuery('#series-select').select2('close');
+
+    //   jQuery('.model-choice__brand-select').addClass('selected');
+    //   jQuery('.model-choice__series-select').removeClass('selected');
+    // });
+
+    // jQuery(seriesClass).on('change', function (evt) {
+    //   if (link.classList.contains('disabled')) {
+    //     link.classList.remove('disabled');
+    //   }
+
+    //   let value = jQuery(evt.target).children('option:selected').text();
+    //   linkHref = value;
+
+
+    //   link.setAttribute('href', linkHref);
+
+    //   jQuery('.model-choice__series-select').addClass('selected');
+    // });
 
     //Resize.init();
     //Resize.addListener();
+
+    brandButton.addEventListener('click', onBrandClick);
+    seriesButton.addEventListener('click', onSeriesClick);
+    brandList.addEventListener('click', onBrandItemClick);
+    seriesList.addEventListener('click', onSeriesItemClick);
+    brandSelect.addEventListener('change', onBrandChange);
+    seriesSelect.addEventListener('change', onSeriesChange);
+    document.addEventListener('mousedown', onOutsideClick);
   };
 
   backend.load(makeOptionNode);

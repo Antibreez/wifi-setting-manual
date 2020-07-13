@@ -52,6 +52,88 @@
     margin-bottom: 15px;
   }
 
+  &__brand-choice,
+  &__series-choice {
+    position: relative;
+
+    height: 63px;
+    width: 100%;
+
+    font-size: 15px;
+    line-height: 16px;
+    text-align: right;
+    padding-right: 46px;
+    color: #707070;
+
+    background-color: transparent;
+    border: 1px solid #e5e5e5;
+    border-radius: 5px;
+    z-index: 11;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &.selected {
+      font-weight: 600;
+      color: #000;
+    }
+  }
+
+  &__brand-list,
+  &__series-list {
+    position: absolute;
+    top: calc(100% - 5px);
+    left: 0;
+
+    display: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    max-height: 194px;
+    padding-top: 5px;
+
+    z-index: 1000;
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+    border-top: none;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    overflow: auto;
+
+    &.show {
+      display: block;
+    }
+  }
+
+  &__brand-item,
+  &__series-item {
+    padding-left: 15px;
+    padding-right: 20px;
+
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 63px;
+
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;   /* Chrome/Safari/Opera */
+    -khtml-user-select: none;    /* Konqueror */
+    -moz-user-select: none;      /* Firefox */
+    -ms-user-select: none;       /* Internet Explorer/Edge */
+    user-select: none;           /* Non-prefixed version, currently
+                                    not supported by any browser */
+
+
+    &:hover {
+      cursor: pointer;
+      background-color: #f7f7f7;
+    }
+  }
+
   &__series-wrapper {
     position: relative;
 
@@ -114,8 +196,8 @@
   }
 }
 
-label[for='brand-select'],
-label[for='series-select'] {
+.model-choice__brand-choice-title,
+.model-choice__series-choice-title {
   position: absolute;
   top: 50%;
   left: 15px;
@@ -126,7 +208,12 @@ label[for='series-select'] {
   margin-top: -8px;
 
   display: block;
-  z-index: 100;
+  z-index: 10;
+}
+
+.model-choice__select-series,
+.model-choice__select-brand {
+  display: none;
 }
 
 @include desktop {
@@ -189,6 +276,22 @@ label[for='series-select'] {
     & option {
       opacity: 1;
     }
+  }
+
+
+
+  .model-choice__select-series,
+  .model-choice__select-brand {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    display: block;
+    width: 100%;
+    height: 100%;
+
+    opacity: 0;
+    z-index: 1001;
   }
 }
 

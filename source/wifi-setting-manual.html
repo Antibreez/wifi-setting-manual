@@ -21,10 +21,17 @@
         Укажите бренд и серию Вашего кондиционера
       </p>
       <div class="model-choice__brand-wrapper">
-        <label for="brand-select">Бренд</label>
-        <select class="model-choice__select  model-choice__brand-select" name="brand" id="brand-select" style="width: 100%">
+        <h3 class="model-choice__brand-choice-title">Бренд</h3>
+        <button class="model-choice__brand-choice">Выбрать из списка</button>
+        <ul class="model-choice__brand-list">
+        </ul>
+        <select class="model-choice__select-brand">
           <option value="" disabled selected>Выбрать из списка</option>
         </select>
+        <!-- <label for="brand-select">Бренд</label>
+        <select class="model-choice__select  model-choice__brand-select" name="brand" id="brand-select" style="width: 100%">
+          <option value="" disabled selected>Выбрать из списка</option>
+        </select> -->
 
         <!-- <select name="a" id="aaa" style="width: 100%; z-index: 1000; position: absolute; top: 0; left: 0;">
           <option value="" disabled selected hidden>xxx</option>
@@ -39,10 +46,17 @@
 
 
       <div class="model-choice__series-wrapper">
-        <label for="series-select">Серия</label>
+        <h3 class="model-choice__series-choice-title">Серия</h3>
+        <button class="model-choice__series-choice" disabled>Выбрать из списка</button>
+        <ul class="model-choice__series-list">
+        </ul>
+        <select  class="model-choice__select-series" disabled>
+          <option value="" disabled selected>Выбрать из списка</option>
+        </select>
+        <!-- <label for="series-select">Серия</label>
         <select class="model-choice__select  model-choice__series-select" disabled style="width: 100%">
           <option value="">Выбрать из списка</option>
-        </select>
+        </select> -->
       </div>
       <a class="model-choice__link disabled">Далее</a>
     </section>
