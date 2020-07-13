@@ -67,10 +67,20 @@
     removeClass(seriesSelects[idx]);
   };
 
-  if (isMobile()) {
-    removeClass(brandSelect);
-    addEventListeners();
-  }
+  
 
-  window.addEventListener('resize', onResize);
+  window.Resize = {
+    addListener: () => {
+      window.addEventListener('resize', onResize);
+    },
+
+    init: () => {
+      if (isMobile()) {
+        removeClass(brandSelect);
+        addEventListeners();
+      }
+    }
+  };
+
+  
 })();
