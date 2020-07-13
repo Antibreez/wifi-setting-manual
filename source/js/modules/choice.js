@@ -163,6 +163,9 @@
         if (currentBrandIdx !== idx) {
           seriesList.innerHTML = '';
 
+          seriesButton.textContent = 'Выбрать из списка';
+          seriesButton.classList.remove('selected');
+
           let fragment = document.createDocumentFragment();
           let idx = +target.getAttribute('data-id');
 
@@ -193,6 +196,9 @@
     const onBrandChange = (evt) => {
       currentOptionIdx = evt.target.selectedIndex - 1;
       seriesSelect.innerHTML = '';
+
+      seriesButton.textContent = 'Выбрать из списка';
+      seriesButton.classList.remove('selected');
 
       let node = document.createElement('option');
       node.textContent = "Выбрать из списка";
