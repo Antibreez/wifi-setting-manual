@@ -1,4 +1,8 @@
 (function () {
+  if (!document.getElementById('animation')) {
+    return;
+  }
+
   lottie.loadAnimation({
     container: document.getElementById('animation'), // the dom element that will contain the animation
     renderer: 'svg',
@@ -121,98 +125,98 @@
 
 
 (function($) {
-  function makeSelect(elementClass) {
-    $(elementClass).select2({
-      minimumResultsForSearch: -1,
-    });
-  };
+  // function makeSelect(elementClass) {
+  //   $(elementClass).select2({
+  //     minimumResultsForSearch: -1,
+  //   });
+  // };
 
-  window.makeSelect = makeSelect;
+  // window.makeSelect = makeSelect;
 })(jQuery);
 
 (function () {
-  const brandSelect = document.querySelector('.model-choice__brand-select');
-  const seriesSelects = document.querySelectorAll('.model-choice__series-select');
-  const hidingClass = 'select2-hidden-accessible';
+  // const brandSelect = document.querySelector('.model-choice__brand-select');
+  // const seriesSelects = document.querySelectorAll('.model-choice__series-select');
+  // const hidingClass = 'select2-hidden-accessible';
 
-  let idx = -1;
+  // let idx = -1;
 
-  const removeClass = (item) => {
-    item.classList.remove(hidingClass);
-    item.removeAttribute('aria-hidden');
-    item.removeAttribute('tabindex');
-  };
+  // const removeClass = (item) => {
+  //   item.classList.remove(hidingClass);
+  //   item.removeAttribute('aria-hidden');
+  //   item.removeAttribute('tabindex');
+  // };
 
-  const addClass = (item) => {
-    item.classList.add(hidingClass);
-    item.setAttribute('aria-hedden', 'true');
-    item.setAttribute('tabindex', '-1');
-  };
+  // const addClass = (item) => {
+  //   item.classList.add(hidingClass);
+  //   item.setAttribute('aria-hedden', 'true');
+  //   item.setAttribute('tabindex', '-1');
+  // };
 
-  const isMobile = () => {
-    return  window.matchMedia('(max-width: 479px)').matches;
-  };
+  // const isMobile = () => {
+  //   return  window.matchMedia('(max-width: 479px)').matches;
+  // };
 
-  let isOutOfMobile = !isMobile;
+  // let isOutOfMobile = !isMobile;
 
-  const onResize = () => {
-    if (isMobile() && isOutOfMobile) {
-      isOutOfMobile = false;
+  // const onResize = () => {
+  //   if (isMobile() && isOutOfMobile) {
+  //     isOutOfMobile = false;
 
-      removeClass(brandSelect);
+  //     removeClass(brandSelect);
 
-      if (idx !== -1) {
-        removeClass(seriesSelects[idx]);
-      }
+  //     if (idx !== -1) {
+  //       removeClass(seriesSelects[idx]);
+  //     }
 
-      addEventListeners();
-    }
+  //     addEventListeners();
+  //   }
 
-    if (!isMobile() && !isOutOfMobile) {
-      isOutOfMobile = true;
+  //   if (!isMobile() && !isOutOfMobile) {
+  //     isOutOfMobile = true;
 
-      addClass(brandSelect);
+  //     addClass(brandSelect);
 
-      if (idx !== -1) {
-        addClass(seriesSelects[idx]);
-      }
+  //     if (idx !== -1) {
+  //       addClass(seriesSelects[idx]);
+  //     }
 
-      removeEventListeners();
-    }
-  }
+  //     removeEventListeners();
+  //   }
+  // }
 
-  const addEventListeners = () => {
-    brandSelect.addEventListener('change', onBrandChange);
-  };
+  // const addEventListeners = () => {
+  //   brandSelect.addEventListener('change', onBrandChange);
+  // };
 
-  const removeEventListeners = () => {
-    brandSelect.removeEventListener('change', onBrandChange);
-  };
+  // const removeEventListeners = () => {
+  //   brandSelect.removeEventListener('change', onBrandChange);
+  // };
 
-  const onBrandChange = (evt) => {
-    if (idx !== -1) {
-      addClass(seriesSelects[idx]);
-    }
+  // const onBrandChange = (evt) => {
+  //   if (idx !== -1) {
+  //     addClass(seriesSelects[idx]);
+  //   }
 
-    idx = evt.target.selectedIndex;
+  //   idx = evt.target.selectedIndex;
 
-    removeClass(seriesSelects[idx]);
-  };
+  //   removeClass(seriesSelects[idx]);
+  // };
 
   
 
-  window.Resize = {
-    addListener: () => {
-      window.addEventListener('resize', onResize);
-    },
+  // window.Resize = {
+  //   addListener: () => {
+  //     window.addEventListener('resize', onResize);
+  //   },
 
-    init: () => {
-      if (isMobile()) {
-        removeClass(brandSelect);
-        addEventListeners();
-      }
-    }
-  };
+  //   init: () => {
+  //     if (isMobile()) {
+  //       removeClass(brandSelect);
+  //       addEventListeners();
+  //     }
+  //   }
+  // };
 
   
 })();
@@ -238,7 +242,10 @@
   //   {"id":2,"title":"Kentatsu","series":[{"id":49,"title":"Bravo  KSGB_HFAN"},{"id":50,"title":"Bravo  KSGBA_HZAN"},{"id":56,"title":"KMGBA_HZAN"},{"id":57,"title":"KMGBB_HZAN"},{"id":52,"title":"Team  KSGT_HZAN"},{"id":47,"title":"Titan Genesis KSGX"},{"id":51,"title":"Turin KSGU_HZAN"}]},
   //   {"id":8,"title":"Midea","series":[{"id":61,"title":"Blanc MSMA"},{"id":60,"title":"Blanc MSMA ERP (MA)"},{"id":59,"title":"Mission MSMB (MB)"},{"id":58,"title":"Ultimate Comfort MSMT (MT)"}]}];
 
-  let linkHref = '#';
+  console.log(document.location.search);
+
+  let seriesName = '';
+  let brandName = '';
 
   const brandClass = '.model-choice__brand-select';
   const seriesClass = '.model-choice__series-select';
@@ -249,6 +256,10 @@
   const seriesButton = document.querySelector('.model-choice__series-choice');
   const brandSelect = document.querySelector('.model-choice__select-brand');
   const seriesSelect = document.querySelector('.model-choice__select-series');
+
+  if (!brandList) {
+    return;
+  }
 
   let currentBrandIdx = -1;
   let currentOptionIdx = -1;
@@ -405,6 +416,7 @@
           currentBrandIdx = idx;
 
           brandButton.textContent = target.textContent;
+          brandName = target.textContent;
           if (!brandButton.classList.contains('selected')) {
             brandButton.classList.add('selected');
           }
@@ -454,6 +466,7 @@
       seriesSelect.appendChild(fragment);
 
       brandButton.textContent = evt.target.value;
+      brandName = evt.target.value;
       if (!brandButton.classList.contains('selected')) {
         brandButton.classList.add('selected');
       }
@@ -475,8 +488,8 @@
         seriesButton.classList.remove('opened');
 
         link.classList.remove('disabled');
-        linkHref = target.textContent;
-        link.setAttribute('href', linkHref);
+        seriesName = target.textContent;
+        link.setAttribute('href', 'installation.html?&' + brandName + '&' + seriesName);
       }
     }
 
@@ -487,8 +500,8 @@
       }
 
       link.classList.remove('disabled');
-      linkHref = evt.target.value;
-      link.setAttribute('href', linkHref);
+      seriesName = evt.target.value;
+      link.setAttribute('href', 'installation.html?&' + brandName + '&' + seriesName);
     }
 
     //let splitsData = backend.load(getData);
@@ -541,10 +554,10 @@
     //   }
 
     //   let value = jQuery(evt.target).children('option:selected').text();
-    //   linkHref = value;
+    //   seriesName = value;
 
 
-    //   link.setAttribute('href', linkHref);
+    //   link.setAttribute('href', seriesName);
 
     //   jQuery('.model-choice__series-select').addClass('selected');
     // });

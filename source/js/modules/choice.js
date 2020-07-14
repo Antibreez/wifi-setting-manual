@@ -19,7 +19,10 @@
   //   {"id":2,"title":"Kentatsu","series":[{"id":49,"title":"Bravo  KSGB_HFAN"},{"id":50,"title":"Bravo  KSGBA_HZAN"},{"id":56,"title":"KMGBA_HZAN"},{"id":57,"title":"KMGBB_HZAN"},{"id":52,"title":"Team  KSGT_HZAN"},{"id":47,"title":"Titan Genesis KSGX"},{"id":51,"title":"Turin KSGU_HZAN"}]},
   //   {"id":8,"title":"Midea","series":[{"id":61,"title":"Blanc MSMA"},{"id":60,"title":"Blanc MSMA ERP (MA)"},{"id":59,"title":"Mission MSMB (MB)"},{"id":58,"title":"Ultimate Comfort MSMT (MT)"}]}];
 
-  let linkHref = '#';
+  console.log(document.location.search);
+
+  let seriesName = '';
+  let brandName = '';
 
   const brandClass = '.model-choice__brand-select';
   const seriesClass = '.model-choice__series-select';
@@ -30,6 +33,10 @@
   const seriesButton = document.querySelector('.model-choice__series-choice');
   const brandSelect = document.querySelector('.model-choice__select-brand');
   const seriesSelect = document.querySelector('.model-choice__select-series');
+
+  if (!brandList) {
+    return;
+  }
 
   let currentBrandIdx = -1;
   let currentOptionIdx = -1;
@@ -186,6 +193,7 @@
           currentBrandIdx = idx;
 
           brandButton.textContent = target.textContent;
+          brandName = target.textContent;
           if (!brandButton.classList.contains('selected')) {
             brandButton.classList.add('selected');
           }
@@ -235,6 +243,7 @@
       seriesSelect.appendChild(fragment);
 
       brandButton.textContent = evt.target.value;
+      brandName = evt.target.value;
       if (!brandButton.classList.contains('selected')) {
         brandButton.classList.add('selected');
       }
@@ -256,8 +265,8 @@
         seriesButton.classList.remove('opened');
 
         link.classList.remove('disabled');
-        linkHref = target.textContent;
-        link.setAttribute('href', linkHref);
+        seriesName = target.textContent;
+        link.setAttribute('href', 'installation.html?&' + brandName + '&' + seriesName);
       }
     }
 
@@ -268,8 +277,8 @@
       }
 
       link.classList.remove('disabled');
-      linkHref = evt.target.value;
-      link.setAttribute('href', linkHref);
+      seriesName = evt.target.value;
+      link.setAttribute('href', 'installation.html?&' + brandName + '&' + seriesName);
     }
 
     //let splitsData = backend.load(getData);
@@ -322,10 +331,10 @@
     //   }
 
     //   let value = jQuery(evt.target).children('option:selected').text();
-    //   linkHref = value;
+    //   seriesName = value;
 
 
-    //   link.setAttribute('href', linkHref);
+    //   link.setAttribute('href', seriesName);
 
     //   jQuery('.model-choice__series-select').addClass('selected');
     // });

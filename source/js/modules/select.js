@@ -24,11 +24,11 @@
 
 
 (function($) {
-  function makeSelect(elementClass) {
-    $(elementClass).select2({
-      minimumResultsForSearch: -1,
-    });
-  };
+  // function makeSelect(elementClass) {
+  //   $(elementClass).select2({
+  //     minimumResultsForSearch: -1,
+  //   });
+  // };
 
-  window.makeSelect = makeSelect;
+  // window.makeSelect = makeSelect;
 })(jQuery);
