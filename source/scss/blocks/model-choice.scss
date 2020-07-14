@@ -78,6 +78,24 @@
       cursor: pointer;
     }
 
+    &::after {
+      content: "";
+
+      position: absolute;
+      right: 15px;
+      top: 50%;
+
+      width: 16px;
+      height: 16px;
+      margin-top: -8px;
+
+      background-image: url('../img/arrow-down.svg');
+    }
+
+    &.opened::after {
+      transform: rotate(180deg);
+    }
+
     &.selected {
       font-weight: 600;
       color: #000;
@@ -159,7 +177,9 @@
     border: none;
     background-color: transparent;
 
-    &:hover {
+    &:hover,
+    &:active,
+    &:focus {
       cursor: pointer;
       color: #5EA9FF;
     }
@@ -178,7 +198,9 @@
       background-image: url('../img/arrow-right.svg');
     }
 
-    &:hover::after {
+    &:hover::after,
+    &:active::after,
+    &:focus::after {
       background-image: url('../img/arrow-right-blue.svg');
     }
   }

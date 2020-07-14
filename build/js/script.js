@@ -262,11 +262,13 @@
   const onBrandClick = () => {
     if (!brandList.classList.contains('show')) {
       brandList.classList.add('show');
+      brandButton.classList.add('opened');
       return;
     }
 
     if (brandList.classList.contains('show')) {
       brandList.classList.remove('show');
+      brandButton.classList.remove('opened');
     }
     // jQuery('.model-choice__brand-list').mCustomScrollbar({
     //   setHeight: 189,
@@ -280,13 +282,14 @@
   const onSeriesClick = () => {
     if (!seriesList.classList.contains('show')) {
       seriesList.classList.add('show');
-
+      seriesButton.classList.add('opened');
       // console.log(seriesList.getBoundingClientRect().bottom - window.innerHeight);
       return;
     }
 
     if (seriesList.classList.contains('show')) {
       seriesList.classList.remove('show');
+      seriesButton.classList.remove('opened');
     }
   };
 
@@ -299,7 +302,8 @@
       && !target.classList.contains('model-choice__brand-list')
       && brandList.classList.contains('show')
     ) {
-      brandList.classList.remove('show')
+      brandList.classList.remove('show');
+      brandButton.classList.remove('opened');
     }
 
     if (
@@ -308,7 +312,8 @@
       && !target.classList.contains('model-choice__series-list')
       && seriesList.classList.contains('show')
     ) {
-      seriesList.classList.remove('show')
+      seriesList.classList.remove('show');
+      seriesButton.classList.remove('opened');
     }
   };
 
@@ -377,6 +382,7 @@
       if (target.classList.contains('model-choice__brand-item')) {
         if (currentBrandIdx === idx) {
           brandList.classList.remove('show');
+          brandButton.classList.remove('opened');
         }
 
         if (currentBrandIdx !== idx) {
@@ -408,6 +414,7 @@
           }
 
           brandList.classList.remove('show');
+          brandButton.classList.remove('opened');
         }
       }
     }
@@ -458,6 +465,7 @@
         }
 
         seriesList.classList.remove('show');
+        seriesButton.classList.remove('opened');
 
         link.classList.remove('disabled');
         linkHref = target.textContent;
