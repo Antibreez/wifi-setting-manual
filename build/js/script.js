@@ -430,8 +430,9 @@
       seriesButton.classList.remove('selected');
 
       let node = document.createElement('option');
-      node.textContent = '&nbsp;';
+      node.textContent = '';
       node.setAttribute('disabled', '');
+      node.setAttribute('selected', '');
       node.style.display = 'none';
 
       seriesSelect.appendChild(node);
