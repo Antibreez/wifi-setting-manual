@@ -184,23 +184,20 @@
       color: #5EA9FF;
     }
 
-    &::after {
-      content: "";
-
-      position: absolute;
-      top: 50%;
-      right: 17px;
-
+    & span {
+      display: inline-block;
       width: 46px;
       height: 27px;
-      margin-top: -14px;
+      margin-left: 20px;
+
+      vertical-align: middle;
 
       background-image: url('../img/arrow-right.svg');
     }
 
-    &:hover::after,
-    &:active::after,
-    &:focus::after {
+    &:hover span,
+    &:active span,
+    &:focus span {
       background-image: url('../img/arrow-right-blue.svg');
     }
   }
@@ -212,7 +209,7 @@
       cursor: default;
     }
 
-    &::after {
+    & span {
       background-image: url('../img/arrow-right-disabled.svg');
     }
   }

@@ -2939,18 +2939,18 @@ a {
   color: #5EA9FF;
 }
 
-.model-choice__link::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  right: 17px;
+.model-choice__link span {
+  display: inline-block;
   width: 46px;
   height: 27px;
-  margin-top: -14px;
+  margin-left: 20px;
+  vertical-align: middle;
   background-image: url("../img/arrow-right.svg");
 }
 
-.model-choice__link:hover::after, .model-choice__link:active::after, .model-choice__link:focus::after {
+.model-choice__link:hover span,
+.model-choice__link:active span,
+.model-choice__link:focus span {
   background-image: url("../img/arrow-right-blue.svg");
 }
 
@@ -2962,7 +2962,7 @@ a {
   cursor: default;
 }
 
-.model-choice__link.disabled::after {
+.model-choice__link.disabled span {
   background-image: url("../img/arrow-right-disabled.svg");
 }
 
