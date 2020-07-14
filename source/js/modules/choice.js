@@ -211,6 +211,7 @@
       node.textContent = "Выбрать из списка";
       node.setAttribute('disabled', '');
       node.setAttribute('selected', '');
+      node.style.display = 'none';
 
       seriesSelect.appendChild(node);
 
