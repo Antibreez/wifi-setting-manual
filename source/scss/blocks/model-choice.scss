@@ -190,15 +190,21 @@
       height: 27px;
       margin-left: 20px;
 
+      font-size: 0;
       vertical-align: middle;
 
-      background-image: url('../img/arrow-right.svg');
+      //background-image: url('../img/arrow-right.svg');
     }
 
-    &:hover span,
-    &:active span,
-    &:focus span {
-      background-image: url('../img/arrow-right-blue.svg');
+    & span path {
+      fill: #000;
+    }
+
+    &:hover span path,
+    &:active span path,
+    &:focus span path {
+      //background-image: url('../img/arrow-right-blue.svg');
+      fill: #5EA9FF;
     }
   }
 
@@ -209,8 +215,9 @@
       cursor: default;
     }
 
-    & span {
-      background-image: url('../img/arrow-right-disabled.svg');
+    & span path {
+      //background-image: url('../img/arrow-right-disabled.svg');
+      fill: #dadada;
     }
   }
 }

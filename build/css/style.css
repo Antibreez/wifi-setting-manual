@@ -2944,14 +2944,18 @@ a {
   width: 46px;
   height: 27px;
   margin-left: 20px;
+  font-size: 0;
   vertical-align: middle;
-  background-image: url("../img/arrow-right.svg");
 }
 
-.model-choice__link:hover span,
-.model-choice__link:active span,
-.model-choice__link:focus span {
-  background-image: url("../img/arrow-right-blue.svg");
+.model-choice__link span path {
+  fill: #000;
+}
+
+.model-choice__link:hover span path,
+.model-choice__link:active span path,
+.model-choice__link:focus span path {
+  fill: #5EA9FF;
 }
 
 .model-choice__link.disabled {
@@ -2962,8 +2966,8 @@ a {
   cursor: default;
 }
 
-.model-choice__link.disabled span {
-  background-image: url("../img/arrow-right-disabled.svg");
+.model-choice__link.disabled span path {
+  fill: #dadada;
 }
 
 .model-choice__brand-choice-title,

@@ -210,12 +210,12 @@
       seriesButton.textContent = 'Выбрать из списка';
       seriesButton.classList.remove('selected');
 
-      // let node = document.createElement('option');
-      // node.textContent = "Выбрать из списка";
-      // node.setAttribute('disabled', '');
-      // node.style.display = 'none';
+      let node = document.createElement('option');
+      node.textContent = '';
+      node.setAttribute('disabled', '');
+      node.style.display = 'none';
 
-      // seriesSelect.appendChild(node);
+      seriesSelect.appendChild(node);
 
       let fragment = document.createDocumentFragment();
 
