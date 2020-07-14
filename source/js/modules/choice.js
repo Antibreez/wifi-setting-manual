@@ -1,4 +1,4 @@
-(function (backend, makeSelect, Resize) {
+(function (backend) {
   // const splits = [
   //   {
   //     "id":7,
@@ -196,6 +196,9 @@
 
           brandList.classList.remove('show');
           brandButton.classList.remove('opened');
+
+          link.classList.add('disabled');
+          link.removeAttribute('href');
         }
       }
     }
@@ -210,7 +213,6 @@
       let node = document.createElement('option');
       node.textContent = "Выбрать из списка";
       node.setAttribute('disabled', '');
-      node.setAttribute('selected', '');
       node.style.display = 'none';
 
       seriesSelect.appendChild(node);
@@ -235,6 +237,9 @@
       if (!brandButton.classList.contains('selected')) {
         brandButton.classList.add('selected');
       }
+
+      link.classList.add('disabled');
+      link.removeAttribute('href');
     }
 
     const onSeriesItemClick = (evt) => {
@@ -338,4 +343,4 @@
 
   backend.load(makeOptionNode);
 
-})(window.backend, window.makeSelect, window.Resize);
+})(window.backend);
