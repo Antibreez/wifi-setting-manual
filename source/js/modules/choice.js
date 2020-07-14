@@ -211,7 +211,7 @@
       seriesButton.classList.remove('selected');
 
       let node = document.createElement('option');
-      node.textContent = '';
+      node.textContent = '&nbsp;';
       node.setAttribute('disabled', '');
       node.style.display = 'none';
 
