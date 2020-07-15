@@ -3074,3 +3074,111 @@ a {
     padding-bottom: 0;
   }
 }
+
+.page-installation {
+  min-height: 100vh;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: #f7f7f7;
+}
+
+@media (max-width: 639px) {
+  .page-installation {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+
+.installation {
+  width: 100%;
+  max-width: 810px;
+  padding: 75px;
+  background-color: #fff;
+}
+
+.installation__header {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-bottom: 23px;
+}
+
+.installation__header::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background: -webkit-gradient(linear, right top, left top, from(#5EA9FF), to(#D5D3FF));
+  background: linear-gradient(to left, #5EA9FF, #D5D3FF);
+}
+
+.installation__link-back {
+  display: block;
+  height: 27px;
+  width: 46px;
+  margin-right: 30px;
+  margin-top: 9px;
+}
+
+.installation__link-back path {
+  fill: #000;
+}
+
+.installation__link-back:hover path,
+.installation__link-back:active path,
+.installation__link-back:focus path {
+  fill: #5EA9FF;
+}
+
+.installation__name {
+  margin: 0;
+  max-width: calc(100% - 226px);
+  padding-right: 30px;
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 46px;
+  word-wrap: break-word;
+}
+
+.installation__brand-logo {
+  width: 160px;
+  min-width: 160px;
+  height: 42px;
+  margin-left: auto;
+  margin-top: 2px;
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: 160px auto;
+}
+
+.installation__brand-logo--daikin {
+  background-image: url("../img/logo-daikin.svg");
+}
+
+.installation__brand-logo--daichi {
+  background-image: url("../img/logo-daichi.svg");
+}
+
+.installation__brand-logo--kent {
+  background-image: url("../img/logo-kent.svg");
+}
+
+.installation__brand-logo--midea {
+  background-image: url("../img/logo-midea.svg");
+}
+
+.installation__brand-logo--axioma {
+  background-image: url("../img/logo-axioma.svg");
+}
