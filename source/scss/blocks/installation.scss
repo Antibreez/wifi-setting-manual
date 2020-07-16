@@ -10,6 +10,7 @@
 
     display: flex;
     padding-bottom: 23px;
+    margin-bottom: 50px;
 
     &::after {
       content: "";
@@ -83,6 +84,106 @@
 
     &--axioma {
       background-image: url('../img/logo-axioma.svg');
+    }
+  }
+
+  &__warning {
+    position: relative;
+
+    margin: 0;
+    margin-bottom: 15px;
+    padding-left: 51px;
+
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 20px;
+    color: #FF0000;
+
+    &::before {
+      content: "";
+
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      width: 36px;
+      height: 36px;
+
+      background-image: url('../img/warning.svg');
+    }
+  }
+
+  &__desc {
+    margin: 0;
+    margin-bottom: 50px;
+
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 20px;
+    color: #707070;
+  }
+
+  &__difficulty-section {
+    margin-bottom: 50px;
+  }
+
+  &__difficulty-title {
+    @include section-title;
+
+    margin-bottom: 25px;
+  }
+}
+
+@include desktop {
+  .installation {
+    max-width: 620px;
+    padding: 75px 50px;
+  }
+}
+
+@include tablet {
+  .installation {
+    max-width: 100%;
+    min-height: 100vh;
+    padding: 53px 2.1%;
+
+    &__header {
+      padding-bottom: 22px;
+      margin-bottom: 25px;
+
+      &::after {
+        height: 5px;
+      }
+    }
+
+    &__link-back {
+      margin-top: 8px;
+    }
+
+    &__name {
+      font-size: 36px;
+      line-height: 42px;
+    }
+
+    &__brand-logo {
+      display: none;
+    }
+
+    &__warning {
+      padding-top: 46px;
+      padding-left: 0;
+
+      text-align: center;
+
+      &::before {
+        left: 50%;
+
+        margin-left: -18px;
+      }
+    }
+
+    &__desc {
+      text-align: center;
     }
   }
 }

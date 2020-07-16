@@ -9,6 +9,13 @@
   background-color: #f7f7f7;
 }
 
+@include desktop {
+  .page-installation {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+}
+
 @include tablet {
   .page-installation {
     padding-top: 0;
