@@ -1,4 +1,6 @@
 .equipment {
+  margin-bottom: 90px;
+
   &__title {
     @include section-title;
 
@@ -76,7 +78,7 @@
   &__image img {
     max-width: 100%;
     height: auto;
-    
+
     border-radius: 5px;
   }
 

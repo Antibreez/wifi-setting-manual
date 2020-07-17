@@ -3575,6 +3575,10 @@ a {
   background-image: url("../img/difficulty-arrow.svg");
 }
 
+.equipment {
+  margin-bottom: 90px;
+}
+
 .equipment__title {
   margin: 0;
   font-weight: 600;
@@ -3671,5 +3675,102 @@ a {
   .equipment__pagination {
     bottom: auto;
     top: calc(47vw);
+  }
+}
+
+.process__title {
+  margin: 0;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 27px;
+  color: #000;
+  margin-bottom: 25px;
+}
+
+@media (max-width: 639px) {
+  .process__title {
+    text-align: center;
+  }
+}
+
+.process__wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.process__item {
+  width: 320px;
+  margin-bottom: 25px;
+}
+
+.process__image {
+  margin-bottom: 25px;
+}
+
+.process__image img {
+  border-radius: 5px;
+}
+
+.process__item-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.process__item-number {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 24px;
+  min-width: 24px;
+  height: 24px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-right: 14px;
+  font-size: 14px;
+  line-height: 14px;
+  color: #fff;
+  background-color: #5EA9FF;
+  border-radius: 50%;
+}
+
+.process__item-desc {
+  margin: 0;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 20px;
+  color: #707070;
+}
+
+@media (max-width: 959px) {
+  .process__item {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .process__image {
+    width: 320px;
+    min-width: 320px;
+    margin-right: 20px;
+  }
+  .process__item-content {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .process__item-number {
+    margin-bottom: 15px;
   }
 }
