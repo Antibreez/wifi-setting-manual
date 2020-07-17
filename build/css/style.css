@@ -3617,50 +3617,16 @@ a {
 .equipment__image {
   width: 320px;
   min-width: 320px;
-  height: 150px;
+  min-height: 150px;
   margin-right: 20px;
   border-radius: 5px;
   background-size: cover;
+  overflow: hidden;
 }
 
-.equipment__image--dw01-b_11 {
-  background-image: url("../img/dw01-b_11.jpg");
-}
-
-.equipment__image--dw01-b {
-  background-image: url("../img/dw01-b.jpg");
-}
-
-.equipment__image--dw01-11 {
-  background-image: url("../img/dw01-11.jpg");
-}
-
-.equipment__image--cable-white {
-  background-image: url("../img/cable-white.jpg");
-}
-
-.equipment__image--cable-black {
-  background-image: url("../img/cable-black.jpg");
-}
-
-.equipment__image--cable-blue {
-  background-image: url("../img/cable-blue.jpg");
-}
-
-.equipment__image--cable-breen {
-  background-image: url("../img/cable-breen.jpg");
-}
-
-.equipment__image--cable-red {
-  background-image: url("../img/cable-red.jpg");
-}
-
-.equipment__image--crosshead-sd {
-  background-image: url("../img/crosshead-sd.svg");
-}
-
-.equipment__image--flat-sd {
-  background-image: url("../img/flat-sd.svg");
+.equipment__image img {
+  max-width: 100%;
+  height: auto;
 }
 
 .equipment__item-title {
@@ -3699,7 +3665,7 @@ a {
   .equipment__image {
     width: 100%;
     height: auto;
-    padding-top: 47%;
+    min-height: auto;
     margin-bottom: 48px;
   }
   .equipment__pagination {

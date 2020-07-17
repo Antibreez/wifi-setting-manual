@@ -26,51 +26,57 @@
   &__image {
     width: 320px;
     min-width: 320px;
-    height: 150px;
+    min-height: 150px;
     margin-right: 20px;
 
     border-radius: 5px;
     background-size: cover;
+    overflow: hidden;
 
-    &--dw01-b_11 {
-      background-image: url('../img/dw01-b_11.jpg');
-    }
+    // &--dw01-b_11 {
+    //   background-image: url('../img/dw01-b_11.jpg');
+    // }
 
-    &--dw01-b {
-      background-image: url('../img/dw01-b.jpg');
-    }
+    // &--dw01-b {
+    //   background-image: url('../img/dw01-b.jpg');
+    // }
 
-    &--dw01-11 {
-      background-image: url('../img/dw01-11.jpg');
-    }
+    // &--dw01-11 {
+    //   background-image: url('../img/dw01-11.jpg');
+    // }
 
-    &--cable-white {
-      background-image: url('../img/cable-white.jpg');
-    }
+    // &--cable-white {
+    //   background-image: url('../img/cable-white.jpg');
+    // }
 
-    &--cable-black {
-      background-image: url('../img/cable-black.jpg');
-    }
+    // &--cable-black {
+    //   background-image: url('../img/cable-black.jpg');
+    // }
 
-    &--cable-blue {
-      background-image: url('../img/cable-blue.jpg');
-    }
+    // &--cable-blue {
+    //   background-image: url('../img/cable-blue.jpg');
+    // }
 
-    &--cable-breen {
-      background-image: url('../img/cable-breen.jpg');
-    }
+    // &--cable-breen {
+    //   background-image: url('../img/cable-breen.jpg');
+    // }
 
-    &--cable-red {
-      background-image: url('../img/cable-red.jpg');
-    }
+    // &--cable-red {
+    //   background-image: url('../img/cable-red.jpg');
+    // }
 
-    &--crosshead-sd {
-      background-image: url('../img/crosshead-sd.svg');
-    }
+    // &--crosshead-sd {
+    //   background-image: url('../img/crosshead-sd.svg');
+    // }
 
-    &--flat-sd {
-      background-image: url('../img/flat-sd.svg');
-    }
+    // &--flat-sd {
+    //   background-image: url('../img/flat-sd.svg');
+    // }
+  }
+
+  &__image img {
+    max-width: 100%;
+    height: auto;
   }
 
   &__item-title {
@@ -115,7 +121,8 @@
     &__image {
       width: 100%;
       height: auto;
-      padding-top: 47%;
+      min-height: auto;
+      //min-height: calc(95.8vw);
       margin-bottom: 48px;
     }
 
