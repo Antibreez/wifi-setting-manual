@@ -3619,7 +3619,6 @@ a {
   min-width: 320px;
   min-height: 150px;
   margin-right: 20px;
-  border-radius: 5px;
   background-size: cover;
   overflow: hidden;
 }
@@ -3627,6 +3626,7 @@ a {
 .equipment__image img {
   max-width: 100%;
   height: auto;
+  border-radius: 5px;
 }
 
 .equipment__item-title {
