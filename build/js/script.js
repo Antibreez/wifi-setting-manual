@@ -221,7 +221,7 @@
   
 })();
 
-(function (backend) {
+(function (backend, PAGES) {
   // const splits = [
   //   {
   //     "id":7,
@@ -242,10 +242,10 @@
   //   {"id":2,"title":"Kentatsu","series":[{"id":49,"title":"Bravo  KSGB_HFAN"},{"id":50,"title":"Bravo  KSGBA_HZAN"},{"id":56,"title":"KMGBA_HZAN"},{"id":57,"title":"KMGBB_HZAN"},{"id":52,"title":"Team  KSGT_HZAN"},{"id":47,"title":"Titan Genesis KSGX"},{"id":51,"title":"Turin KSGU_HZAN"}]},
   //   {"id":8,"title":"Midea","series":[{"id":61,"title":"Blanc MSMA"},{"id":60,"title":"Blanc MSMA ERP (MA)"},{"id":59,"title":"Mission MSMB (MB)"},{"id":58,"title":"Ultimate Comfort MSMT (MT)"}]}];
 
-  console.log(document.location.search);
 
   let seriesName = '';
   let brandName = '';
+  let linkHref = '';
 
   const brandClass = '.model-choice__brand-select';
   const seriesClass = '.model-choice__series-select';
@@ -269,6 +269,20 @@
   const seriesTemplate = document.querySelector('#series').content.querySelector('.model-choice__series-select');
 
   const link = document.querySelector('.model-choice__link');
+
+  const getHref = (series) => {
+    let href = '';
+
+    PAGES.forEach((page) => {
+      if (href === '') {
+        if (series.toLowerCase().indexOf(page) !== -1) {
+          href = page;
+        }
+      }
+    });
+
+    return href === '' ? '' : href + '.html';
+  };
 
   const onBrandClick = () => {
     if (!brandList.classList.contains('show')) {
@@ -489,7 +503,7 @@
 
         link.classList.remove('disabled');
         seriesName = target.textContent;
-        link.setAttribute('href', 'installation.html?&' + brandName + '&' + seriesName);
+        link.setAttribute('href', getHref(seriesName));
       }
     }
 
@@ -501,8 +515,21 @@
 
       link.classList.remove('disabled');
       seriesName = evt.target.value;
-      link.setAttribute('href', 'installation.html?&' + brandName + '&' + seriesName);
+      link.setAttribute('href', getHref(seriesName));
     }
+
+    const onLinkClick = (evt) => {
+      evt.preventDefault();
+      let href = evt.target.getAttribute('href');
+
+      if (href === '') {
+        alert('Инструкция по установке Wi-Fi контроллера для данной серии кондиционера в скором времени появится.');
+
+        return;
+      }
+
+      document.location.href = href;
+    };
 
     //let splitsData = backend.load(getData);
 
@@ -571,16 +598,21 @@
     seriesList.addEventListener('click', onSeriesItemClick);
     brandSelect.addEventListener('change', onBrandChange);
     seriesSelect.addEventListener('change', onSeriesChange);
+    link.addEventListener('click', onLinkClick);
     document.addEventListener('mousedown', onOutsideClick);
   };
 
   backend.load(makeOptionNode);
 
-})(window.backend);
+})(window.backend, window.PAGES);
 
 (function () {
   const wrapper = document.querySelector('.equipment__wrapper');
   const container = document.querySelector('.equipment__container');
+
+  if(!wrapper) {
+    return;
+  }
 
   const initSwiper = () => {
     return new Swiper('.equipment__container', {
@@ -625,6 +657,10 @@
 (function () {
   const wrapper = document.querySelector('.process__wrapper');
   const container = document.querySelector('.process__container');
+
+  if (!wrapper) {
+    return;
+  }
 
   const initSwiper = () => {
     return new Swiper('.process__container', {

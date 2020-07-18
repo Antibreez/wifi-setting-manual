@@ -2,6 +2,10 @@
   const wrapper = document.querySelector('.equipment__wrapper');
   const container = document.querySelector('.equipment__container');
 
+  if(!wrapper) {
+    return;
+  }
+
   const initSwiper = () => {
     return new Swiper('.equipment__container', {
       pagination: {
