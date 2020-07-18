@@ -161,6 +161,7 @@
     }
 
     &__name {
+      max-width: none;
       font-size: 36px;
       line-height: 42px;
     }
@@ -184,6 +185,37 @@
 
     &__desc {
       text-align: center;
+    }
+  }
+}
+
+@include mobile {
+  .installation {
+    padding-top: 58px;
+    padding-left: 0;
+    padding-right: 0;
+
+    &__header {
+      padding-bottom: 20px;
+      padding-left: 3.1%;
+      padding-right: 3.1%;
+    }
+
+    &__link-back {
+      margin-top: 1px;
+      margin-right: 25px;
+    }
+
+    &__name {
+      font-size: 28px;
+      line-height: 32px;
+    }
+
+    &__warning,
+    &__desc,
+    &__difficulty-section {
+      padding-left: 3.1%;
+      padding-right: 3.1%;
     }
   }
 }

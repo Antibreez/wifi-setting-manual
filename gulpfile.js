@@ -117,6 +117,7 @@ gulp.task(`js`, function () {
     `source/js/modules/resize.js`,
     `source/js/modules/choice.js`,
     `source/js/modules/equipment.js`,
+    `source/js/modules/process.js`,
   ])
     .pipe(plumber())
     .pipe(sourcemap.init())
