@@ -27,7 +27,6 @@
     const numberField = container.querySelector('.process__number');
 
     swiper.on('slideChange', () => {
-      console.log(swiper.realIndex);
       numberField.textContent = swiper.realIndex + 1;
     });
   };
